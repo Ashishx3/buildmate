@@ -1,0 +1,31 @@
+.animated-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+/* This creates the pseudo-element that will be our underline */
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  /* Start with the underline scaled to 0, so it's hidden */
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px; /* Adjust this to move the line down */
+  left: 0;
+  
+  /* This is our colorful gradient for the underline */
+  background: linear-gradient(to right, #F9A825, #E91E63, #673AB7);
+  
+  /* This sets the origin of the animation to the left */
+  transform-origin: bottom left;
+  
+  /* This creates the slow transition effect */
+  transition: transform 0.4s ease-out;
+}
+
+/* On hover, we scale the underline to its full width */
+.animated-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
