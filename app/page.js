@@ -57,7 +57,7 @@ const Homepage = () => {
             Your Code. <br/> <span className="text-indigo-500 not-italic">Your Kingdom.</span>
           </h1>
           <p className="text-slate-400 text-xs md:text-lg mt-8 max-w-xl mx-auto font-bold tracking-[0.3em] uppercase opacity-50">
-            "Stop Building for Free. Start Building for keeps."
+            Stop Building for Free. Start Building for keeps.&quot;
           </p>
         </motion.div>
 
