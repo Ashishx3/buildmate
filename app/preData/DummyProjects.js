@@ -1,0 +1,77 @@
+const dummyProjects = [
+  {
+    title: "AI Startup Idea Generator (1M+ Ideas)",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    tech: ["Next.js", "OpenAI", "MongoDB"],
+    views: 5420,
+    price: "₹3,999",
+    author: "Aditya Sharma",
+  },
+  {
+    title: "BuildMate Pro – Smart Construction Planner",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+    tech: ["React", "Node.js", "PostgreSQL"],
+    views: 6890,
+    price: "₹4,500",
+    author: "Harsh Singh",
+  },
+  {
+    title: "Netflix Clone with AI Recommendations",
+    image: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
+    tech: ["React", "Firebase", "AI"],
+    views: 8120,
+    price: "₹2,999",
+    author: "Karan Mehta",
+  },
+  {
+    title: "AI Startup Idea Generator (1M+ Ideas)",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    tech: ["Next.js", "OpenAI", "MongoDB"],
+    views: 5420,
+    price: "₹3,999",
+    author: "Aditya Sharma",
+  },
+  {
+    title: "BuildMate Pro – Smart Construction Planner",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+    tech: ["React", "Node.js", "PostgreSQL"],
+    views: 6890,
+    price: "₹4,500",
+    author: "Harsh Singh",
+  },
+  {
+    title: "Netflix Clone with AI Recommendations",
+    image: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
+    tech: ["React", "Firebase", "AI"],
+    views: 8120,
+    price: "₹2,999",
+    author: "Karan Mehta",
+  },
+  {
+    title: "AI Startup Idea Generator (1M+ Ideas)",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    tech: ["Next.js", "OpenAI", "MongoDB"],
+    views: 5420,
+    price: "₹3,999",
+    author: "Aditya Sharma",
+  },
+  {
+    title: "BuildMate Pro – Smart Construction Planner",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+    tech: ["React", "Node.js", "PostgreSQL"],
+    views: 6890,
+    price: "₹4,500",
+    author: "Harsh Singh",
+  },
+  {
+    title: "Netflix Clone with AI Recommendations",
+    image: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
+    tech: ["React", "Firebase", "AI"],
+    views: 8120,
+    price: "₹2,999",
+    author: "Karan Mehta",
+  },
+  
+];
+
+export default dummyProjects ;

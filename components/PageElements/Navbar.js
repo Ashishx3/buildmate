@@ -2,64 +2,110 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
-import "@/Styles/Navbar.css"
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [shrink, setShrink] = useState(false);
- const [user, setUser] = useState(null);
-   useEffect(() => {
-    axios.get("/api/users/me")
-      .then(res => setUser(res.data))
-      .catch(() => setUser(null));
-      console.log(user)
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const router = useRouter();
+
+  // 🔐 Check login
+  useEffect(() => {
+    axios.get("/api/users/checkLogin")
+      .then(res => setIsLoggedIn(res.data.isLoggedIn))
+      .catch(() => setIsLoggedIn(false));
   }, []);
 
+  // 📜 Modern Scroll effect (shinks sooner for a snappier feel)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > window.innerHeight) {
-        setShrink(true);
-      } else {
-        setShrink(false);
-      }
+      setShrink(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const logout = async () => {
+    try {
+      await axios.get("/api/users/logout");
+      toast.success("See you soon, Mate!");
+      setIsLoggedIn(false);
+      router.push("/");
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+
+  if (isLoggedIn === null) return <div className="h-[80px]" />;
+
   return (
     <nav
-      className={`fixed top-2 items-center left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-in-out
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
         ${shrink
-          ? "w-[80vw] rounded-2xl bg-white/30 backdrop-blur-md border border-gray-300 shadow-lg"
-          : "w-full bg-gray-200 border-b border-gray-200"
+          ? "top-4 w-[90%] max-w-5xl rounded-3xl bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
+          : "top-0 w-full bg-white backdrop-blur-md border-b border-gray-100"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <div className="text-3xl  font-bold text-gray-800 tracking-wide">
-          <Link href="/">BuildMate</Link>
-        </div>
-
-        <div className="hidden md:flex space-x-8 text-gray-700 font-medium">
-  <Link href="/" className="transition hover:text-gray-900 animated-underline">Home</Link>
-  <Link href="/about" className="transition hover:text-gray-900 animated-underline">About</Link>
-  <Link href="/services" className="transition hover:text-gray-900 animated-underline">Emergency</Link>
-  <Link href="/contact" className="transition hover:text-gray-900 animated-underline">Contact</Link>
-</div>
-
-        <div className="flex items-center space-x-4">
-          <Link
-            href="/login"
-            className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
-          >
-            Login
-          </Link>
-          <Link
-            href="/signup"
-            className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
-          >
-            SignUp
+      <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+        
+        {/* Logo Section */}
+        <div className="flex items-center">
+          <Link href="/" className="group flex items-center gap-1">
+            <div className="text-2xl font-black text-[#0a0a0c] tracking-tighter italic transition-all duration-300 group-hover:skew-x-[-2deg]">
+              BUILD<span className="text-indigo-600 not-italic group-hover:text-indigo-500 transition-colors">MATE</span>
+            </div>
+            <div className="h-1.5 w-1.5 rounded-full bg-indigo-600 mt-2 group-hover:scale-[2] group-hover:shadow-[0_0_10px_rgba(79,70,229,0.6)] transition-all duration-300" />
           </Link>
         </div>
+
+        {/* Center Links - Gen Z Minimalist Style */}
+        <div className="hidden md:flex items-center space-x-1 text-sm font-bold uppercase tracking-widest text-gray-500">
+          {[
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+            { name: "Emergency", path: "/services" },
+            { name: "Contact", path: "/contact" },
+            ...(isLoggedIn ? [{ name: "Dashboard", path: "/dashboard" }] : []),
+          ].map((link) => (
+            <Link
+              key={link.name}
+              href={link.path}
+              className="px-4 py-2 rounded-full hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-300"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Right Side - Tactical Buttons */}
+        <div className="flex items-center space-x-3">
+          {isLoggedIn ? (
+            <button
+              onClick={logout}
+              className="px-5 py-2.5 text-xs font-bold uppercase tracking-tighter bg-[#0a0a0c] text-white rounded-full hover:bg-indigo-600 hover:shadow-lg active:scale-95 transition-all duration-300"
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="px-5 py-2.5 text-xs font-bold uppercase tracking-tighter text-gray-700 hover:text-indigo-600 transition-colors"
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="px-6 py-2.5 text-xs font-bold uppercase tracking-tighter bg-[#0a0a0c] text-white whitespace-nowrap rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.2)] hover:bg-indigo-600 hover:shadow-indigo-500/40 active:scale-95 transition-all duration-300"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+
       </div>
     </nav>
   );

@@ -15,7 +15,7 @@ function initLenis() {
   requestAnimationFrame(raf);
 }
 
-const projects = [
+const dummyProjects = [
   {
     title: "AI Resume Builder",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
@@ -69,13 +69,13 @@ export default function BuildMateHome() {
           Explore Elite BuildMate Projects
         </h1>
         <p className="text-slate-400 text-xl mt-6 max-w-2xl mx-auto">
-          Ready-to-use projects with full source code and live previews
+          Ready-to-use Projects with full source code and live previews
         </p>
       </motion.div>
 
       {/* GRID */}
       <div className="grid md:grid-cols-3 gap-14">
-        {projects.map((project, index) => (
+        {dummyProjects.map((project, index) => (
           <motion.div
             key={project._id}
             initial={{ opacity: 0, y: 80 }}
