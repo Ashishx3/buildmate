@@ -1,5 +1,5 @@
     import mongoose from "mongoose";
-
+import User from "@/models/userModel"; // Adjust the path if necessary
     const projectSchema = new mongoose.Schema({
         title: {
             type: String,
