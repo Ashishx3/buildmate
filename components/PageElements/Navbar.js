@@ -97,6 +97,7 @@ export default function Navbar() {
                 Login
               </Link>
               <Link
+              id="opensign"
                 href="/signup"
                 className="px-6 py-2.5 text-xs font-bold uppercase tracking-tighter bg-[#0a0a0c] text-white whitespace-nowrap rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.2)] hover:bg-indigo-600 hover:shadow-indigo-500/40 active:scale-95 transition-all duration-300"
               >
