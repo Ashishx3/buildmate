@@ -6,16 +6,18 @@ connect();
 
 export async function GET() {
   try {
-    const projects = await Project.find()
-      .populate("user", "username")   // ⭐ magic line
-      .sort({ createdAt: -1 })
-      .lean();
+      const projects = await Project.find()
+            .populate("user", "username")   // ⭐ magic line
+                  .sort({ createdAt: -1 })
+                        .lean();
 
-    return NextResponse.json(projects);
-  } catch (error) {
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
-  }
-}
+                            return NextResponse.json(projects);
+                              } catch (error) {
+                                  return NextResponse.json(
+                                        { error: error.message },
+                                              { status: 500 }
+                                                  );
+                                                    }
+                                                    }
+
+
