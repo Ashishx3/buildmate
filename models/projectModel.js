@@ -1,8 +1,9 @@
     import mongoose from "mongoose";
+    import user from "./userModel" 
 
     const projectSchema = new mongoose.Schema({
         title: {
-            type: String,
+            type: String,   
             required: true
         },
         description: {

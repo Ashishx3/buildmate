@@ -59,6 +59,7 @@ const LoginPage = () => {
               <div className="relative">
                 <input
                   type="email"
+                  id="email123"
                   placeholder="name@work.com"
                   {...register("email", {
                     required: "Identity is required",
@@ -85,6 +86,7 @@ const LoginPage = () => {
               </div>
               <div className="relative">
                 <input
+                id="pass123"
                   type="password"
                   placeholder="••••••••"
                   {...register("password", {
@@ -104,6 +106,7 @@ const LoginPage = () => {
             {/* Login Button */}
             <button
               type="submit"
+              id="sub"
               disabled={isSubmitting}
               className="relative w-full group overflow-hidden rounded-2xl bg-indigo-600 px-8 py-4 font-bold text-white transition-all hover:bg-indigo-500 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed shadow-[0_10px_20px_-10px_rgba(79,70,229,0.5)]"
             >

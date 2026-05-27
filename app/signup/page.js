@@ -89,6 +89,7 @@ const SignupPage = () => {
 
             <button
               type="submit"
+              id='subb'
               disabled={isPending}
               className="relative w-full group overflow-hidden rounded-xl bg-white px-8 py-4 font-bold text-black transition-all hover:bg-indigo-500 hover:text-white active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
             >
